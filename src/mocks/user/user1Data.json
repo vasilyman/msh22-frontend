@@ -1,0 +1,12 @@
+{
+  "id": 0,
+  "email": "",
+  "firstname": "Пётр",
+  "lastname": "Иванов",
+  "middlename": "Сергеевич",
+  "organizationId": 0,
+  "phone": "",
+  "position": "Оператор системы",
+  "role": "operator",
+  "login": "user1"
+}

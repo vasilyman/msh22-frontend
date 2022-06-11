@@ -1,0 +1,7 @@
+name,text
+client_id,клиент
+product_category_name,продукт
+utm_source,источник (google, yandex, vk, tenchat, telegram)
+utm_content,id объявления (сообщение тг, пост вк и проч.)
+utm_campaign,id кампании 
+data,дата лида
