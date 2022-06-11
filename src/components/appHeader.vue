@@ -1,12 +1,12 @@
 <template>
   <div>
-    <v-system-bar app color="primary" dark window>
+    <v-system-bar v-if="system" app color="primary" dark window>
       <v-spacer></v-spacer>
-      <span class="">Личный кабинет</span>
+      <span class="accent--text">Личный кабинет</span>
     </v-system-bar>
     <v-app-bar
       app
-      color="secondary"
+      color="primary"
       dark
       flat
       clipped-left
@@ -16,7 +16,7 @@
         @click="drawerLocal = !drawerLocal"
       ></v-app-bar-nav-icon>
       <slot v-if="!$vuetify.breakpoint.smAndDown" name="user"></slot>
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-toolbar-title v-if="title">{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
       <slot name="menu"></slot>
     </v-app-bar>
@@ -29,10 +29,11 @@ export default {
   props: {
     title: String,
     drawer: Boolean,
+    system: Boolean,
   },
   data() {
     return {
-      drawerLocal: false,
+      drawerLocal: true,
     };
   },
   watch: {
@@ -49,8 +50,8 @@ export default {
     },
     '$vuetify.breakpoint.smAndDown': {
       immediate: true,
-      handler() {
-        this.drawerLocal = false;
+      handler(val) {
+        this.drawerLocal = !val;
       },
     },
   },

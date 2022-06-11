@@ -1,0 +1,38 @@
+[
+  {
+    "segment": "80",
+    "source": "telegram",
+    "channel": "Business FM",
+    "cpm": "37000",
+    "posts": "5",
+    "cpl": "300",
+    "appliedFormCountPrediction": "320"
+  },
+  {
+    "segment": "10",
+    "source": "telegram",
+    "channel": "Business FM",
+    "cpm": "29000",
+    "posts": "4",
+    "cpl": "150",
+    "appliedFormCountPrediction": "145"
+  },
+  {
+    "segment": "5",
+    "source": "Вконтакте",
+    "channel": "Индекс",
+    "cpm": "19000",
+    "posts": "12",
+    "cpl": "50",
+    "appliedFormCountPrediction": "60"
+  },
+  {
+    "segment": "5",
+    "source": "Партнер",
+    "channel": "Сравни.ру",
+    "cpm": "40000",
+    "posts": "1",
+    "cpl": "1000",
+    "appliedFormCountPrediction": "900"
+  }
+]

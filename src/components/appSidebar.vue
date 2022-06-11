@@ -2,9 +2,11 @@
   <v-navigation-drawer
     v-model="drawer"
     app
+    color="grey lighten-4"
     clipped
+    touchless
     :mobile-breakpoint="0"
-    :temporary="true"
+    :temporary="$vuetify.breakpoint.smAndDown"
   >
     <slot />
   </v-navigation-drawer>

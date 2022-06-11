@@ -4,10 +4,10 @@
     dark
     color="primary"
     absolute
-    :height="162"
+    :height="80"
   >
     <v-row>
-      <v-col class="text-center">FastWin</v-col>
+      <v-col>FastWin</v-col>
     </v-row>
   </v-footer>
 </template>

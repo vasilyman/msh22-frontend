@@ -2,9 +2,17 @@ export default {
   namespaced: true,
 
   state: {
-    title: 'Рекомендательный сервис',
+    title: 'Рекомендательный сервис УРАЛСИБ',
     drawer: false,
     menu: [
+      {
+        name: 'index',
+        text: 'Главная',
+      },
+      {
+        name: 'region',
+        text: 'Региональный анализ',
+      },
       {
         name: 'about',
         text: 'О проекте',
@@ -14,6 +22,7 @@ export default {
         text: 'Контакты',
       },
     ],
+    currentMenu: 'index',
   },
 
   mutations: {
@@ -22,6 +31,9 @@ export default {
     },
     setDrawer(state, data) {
       state.drawer = data;
+    },
+    setCurrentMenu(state, data) {
+      state.currentMenu = data;
     },
   },
 
@@ -36,6 +48,9 @@ export default {
     },
     getMenu(state) {
       return state.menu;
+    },
+    getCurrentMenu(state) {
+      return state.currentMenu;
     },
   },
 };

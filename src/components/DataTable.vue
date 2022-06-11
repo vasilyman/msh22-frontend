@@ -6,6 +6,7 @@
       :items="items"
       hide-default-footer
       class="elevation-1"
+      :search="search"
     >
     </v-data-table>
     <v-pagination
@@ -38,6 +39,10 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    filter: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
@@ -46,15 +51,18 @@ export default {
   },
   computed: {
     headers() {
-      return this.columns.map(({ text, name }) => ({
+      return this.columns.map(({ text, name, sortable }) => ({
         text,
         value: name,
-        sortable: false,
+        sortable,
         align: 'center',
       }));
     },
     items() {
       return this.list;
+    },
+    search() {
+      return this.filter?.search;
     },
   },
   watch: {

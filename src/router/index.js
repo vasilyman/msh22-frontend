@@ -7,7 +7,15 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: () => import(/* webpackChunkName: "index" */ '@/views/index.vue'),
+    component: () => import(/* webpackChunkName: "index" */ '@/views/combine.vue'),
+  },
+  {
+    path: '/region',
+    name: 'region',
+    components: {
+      default: () => import(/* webpackChunkName: "region" */ '@/views/region.vue'),
+      sidebar: () => import(/* webpackChunkName: "sidebarRegionFilters" */ '@/components/regionFilters.vue'),
+    },
   },
 ];
 

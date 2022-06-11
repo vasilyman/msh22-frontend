@@ -1,7 +1,7 @@
 import API from './Api';
 
 class RegionsApi {
-  static getColumns() {
+  static getList() {
     return API.request({
       method: 'GET',
       url: 'api/v1/regions/getList',
