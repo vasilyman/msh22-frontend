@@ -5,8 +5,8 @@
       :headers="headers"
       :items="items"
       hide-default-footer
-      class="elevation-1"
       :search="search"
+      :class="[$style['bordered']]"
     >
     </v-data-table>
     <v-pagination
@@ -87,6 +87,8 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss" module>
+.bordered {
+  border: 1px solid #C8D0DD;
+}
 </style>
