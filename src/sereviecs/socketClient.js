@@ -1,5 +1,5 @@
 export default class SocketClient {
-  constructor(baseWs = 'ws://w.mlts.me/ws') {
+  constructor(baseWs = 'wss://msh22.remonstro.ru/ws') {
     this.baseWs = baseWs;
     this.client = null;
   }
