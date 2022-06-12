@@ -12,7 +12,10 @@ const routes = [
   {
     path: '/combine',
     name: 'combine',
-    component: () => import(/* webpackChunkName: "combine" */ '@/views/combine.vue'),
+    components: {
+      default: () => import(/* webpackChunkName: "combine" */ '@/views/combine.vue'),
+      sidebarRight: () => import(/* webpackChunkName: "appRightSidebar" */ '@/components/appRightSidebar.vue'),
+    },
   },
   {
     path: '/region',
@@ -21,6 +24,11 @@ const routes = [
       default: () => import(/* webpackChunkName: "region" */ '@/views/region.vue'),
       sidebar: () => import(/* webpackChunkName: "sidebarRegionFilters" */ '@/components/regionFilters.vue'),
     },
+  },
+  {
+    path: '/channels',
+    name: 'channels',
+    component: () => import(/* webpackChunkName: "channels" */ '@/views/channels.vue'),
   },
 ];
 

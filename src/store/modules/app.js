@@ -4,10 +4,15 @@ export default {
   state: {
     title: 'Рекомендательный сервис УРАЛСИБ',
     drawer: false,
+    drawerRight: false,
     menu: [
       {
         name: 'index',
         text: 'Главная',
+      },
+      {
+        name: 'channels',
+        text: 'Каналы',
       },
       {
         name: 'combine',
@@ -23,6 +28,8 @@ export default {
       },
     ],
     currentMenu: 'index',
+    drawerRightComponent: null,
+    drawerRightProps: {},
   },
 
   mutations: {
@@ -31,6 +38,15 @@ export default {
     },
     setDrawer(state, data) {
       state.drawer = data;
+    },
+    setDrawerRight(state, data) {
+      state.drawerRight = data;
+    },
+    setDrawerRightComponent(state, data) {
+      state.drawerRightComponent = data;
+    },
+    setDrawerRightProps(state, data) {
+      state.drawerRightProps = data || {};
     },
     setCurrentMenu(state, data) {
       state.currentMenu = data;
@@ -46,11 +62,20 @@ export default {
     getDrawer(state) {
       return state.drawer;
     },
+    getDrawerRight(state) {
+      return state.drawerRight;
+    },
     getMenu(state) {
       return state.menu;
     },
     getCurrentMenu(state) {
       return state.currentMenu;
+    },
+    getDrawerRightComponent(state) {
+      return state.drawerRightComponent;
+    },
+    getDrawerRightProps(state) {
+      return state.drawerRightProps;
     },
   },
 };

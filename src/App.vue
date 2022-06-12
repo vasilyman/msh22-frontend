@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <routerView name="sidebar" v-model="drawer" />
+    <routerView name="sidebarRight" v-model="drawerRight" />
     <AppHeader
       :drawer.sync="drawer"
     >
@@ -53,6 +54,14 @@ export default {
       },
       set(val) {
         this.setCurrentMenu(val);
+      },
+    },
+    drawerRight: {
+      get() {
+        return this.$store.getters['App/getDrawerRight'];
+      },
+      set(val) {
+        this.$store.commit('App/setDrawerRight', val);
       },
     },
   },

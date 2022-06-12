@@ -2,14 +2,41 @@
   <div class="pa-5">
   <v-card rounded="lg">
     <v-card-text>
-      <v-row justify="center">
-        <v-col cols="auto" :class="[$style['card-header'], 'black--text']">
+      <v-row>
+        <v-col :class="[$style['card-header'], 'base--text', 'text-start']">
           <h3 class="text-h4">
             {{ getTitle }}
           </h3>
           <p class="">
             {{ getSubtitle }}
           </p>
+        </v-col>
+        <v-col cols="auto">
+          <v-card flat>
+            <v-card-text>
+              <v-row
+                align="center"
+              >
+                <v-col>
+                  <span class="text-h4">₽ 170 000</span>
+                </v-col>
+                <v-col cols="auto">
+                  <v-chip
+                    color="success"
+                    label
+                    text-color="white"
+                    title="меньше за аналогичный период"
+                  >
+                    <v-icon left>
+                      mdi-triangle-small-down
+                    </v-icon>
+                    2.3%
+                  </v-chip>
+                </v-col>
+              </v-row>
+              <div class="text-end">Прогноз бюджета</div>
+            </v-card-text>
+          </v-card>
         </v-col>
       </v-row>
       <v-row>
@@ -31,6 +58,7 @@
             :list="getList"
             :columns="getColumns"
             :query="query"
+            @click:row="onClickRow"
           ></DataTable>
         </v-col>
       </v-row>
@@ -69,6 +97,14 @@ export default {
       };
       return query;
     },
+    drawerRight: {
+      get() {
+        return this.$store.getters['App/getDrawerRight'];
+      },
+      set(val) {
+        this.$store.commit('App/setDrawerRight', val);
+      },
+    },
   },
   watch: {
     query: {
@@ -83,6 +119,11 @@ export default {
     ...mapActions('ChannelBag', ['fetchList']),
     async fetchData(query) {
       await this.fetchList(query);
+    },
+    onClickRow(row) {
+      this.$store.commit('App/setDrawerRightComponent', 'CampainDetails');
+      this.drawerRight = true;
+      this.$store.commit('App/setDrawerRightProps', row);
     },
   },
 };

@@ -7,6 +7,7 @@
       :hide-default-footer="pages"
       :search="search"
       :class="[$style['bordered']]"
+      v-on="$listeners"
     >
     </v-data-table>
     <v-pagination

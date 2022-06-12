@@ -10,6 +10,7 @@
       dark
       flat
       clipped-left
+      clipped-right
     >
       <v-app-bar-nav-icon
         v-if="$vuetify.breakpoint.smAndDown"
