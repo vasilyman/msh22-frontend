@@ -7,7 +7,12 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: () => import(/* webpackChunkName: "index" */ '@/views/combine.vue'),
+    component: () => import(/* webpackChunkName: "index" */ '@/views/index.vue'),
+  },
+  {
+    path: '/combine',
+    name: 'combine',
+    component: () => import(/* webpackChunkName: "combine" */ '@/views/combine.vue'),
   },
   {
     path: '/region',

@@ -1,8 +1,6 @@
 <template>
   <v-app>
-    <AppSidebar v-model="drawer" >
-      <routerView name="sidebar" />
-    </AppSidebar>
+    <routerView name="sidebar" v-model="drawer" />
     <AppHeader
       :drawer.sync="drawer"
     >
@@ -34,7 +32,6 @@ export default {
   name: 'App',
   components: {
     AppHeader: () => import('@/components/appHeader.vue'),
-    AppSidebar: () => import('@/components/appSidebar.vue'),
     Logo: () => import('@/components/logo.vue'),
     AppFooter: () => import('@/components/appFooter.vue'),
     HorizontalMenu: () => import('@/components/HorizontalMenu.vue'),
@@ -61,17 +58,21 @@ export default {
   },
   watch: {
     currentMenu: {
-      handler(val) {
-        try {
-          this.$router.push({ name: val });
-        } catch (error) {
-          console.log('has no that route', val);
+      handler(val = 'index') {
+        if (this.$route.name !== val) {
+          this.$router.push({ name: val })
+            .catch((e) => {
+              console.log(e);
+            });
         }
       },
     },
-  },
-  created() {
-    this.checkAuth();
+    $route: {
+      immediate: true,
+      handler({ name }) {
+        this.currentMenu = name;
+      },
+    },
   },
   methods: {
     ...mapActions('User', ['fetchUser']),

@@ -10,12 +10,12 @@ export default {
         text: 'Главная',
       },
       {
-        name: 'region',
-        text: 'Региональный анализ',
+        name: 'combine',
+        text: 'Создать кампанию',
       },
       {
-        name: 'about',
-        text: 'О проекте',
+        name: 'region',
+        text: 'Региональный анализ',
       },
       {
         name: 'contacts',

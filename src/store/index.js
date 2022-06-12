@@ -8,6 +8,7 @@ import RegionPredict from '@/store/modules/RegionPredict';
 import ClientData from '@/store/modules/ClientData';
 import Regions from '@/store/modules/Regions';
 import ChannelBag from '@/store/modules/ChannelBag';
+import Leads from '@/store/modules/Leads';
 
 Vue.use(Vuex);
 
@@ -28,5 +29,6 @@ export default new Vuex.Store({
     ClientData,
     Regions,
     ChannelBag,
+    Leads,
   },
 });

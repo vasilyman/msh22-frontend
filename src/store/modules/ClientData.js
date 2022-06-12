@@ -8,7 +8,7 @@ export default {
   mutations: {},
 
   actions: {
-    async uploadFile(file) {
+    async uploadFile(context, file) {
       try {
         const data = new FormData();
         data.append('file', file);

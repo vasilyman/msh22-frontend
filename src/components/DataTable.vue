@@ -4,13 +4,13 @@
     <v-data-table
       :headers="headers"
       :items="items"
-      hide-default-footer
+      :hide-default-footer="pages"
       :search="search"
       :class="[$style['bordered']]"
     >
     </v-data-table>
     <v-pagination
-      v-if="pages > 1"
+      v-if="pages && pages > 1"
       v-model="pageLocal"
       circle
       :length="pages"
@@ -59,7 +59,13 @@ export default {
       }));
     },
     items() {
-      return this.list;
+      return this.list.filter((item) => {
+        let result = true;
+        Object.entries(this.filter).forEach(([key, val]) => {
+          result = result && (!item[key] || item[key] === val);
+        });
+        return result;
+      });
     },
     search() {
       return this.filter?.search;

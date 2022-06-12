@@ -13,7 +13,7 @@ export default {
     columns: [
       {
         name: 'position',
-        text: 'Позиция',
+        text: 'Позиция/Дефицит',
         sortable: true,
       },
       {
@@ -30,14 +30,12 @@ export default {
         text: 'Прогноз на 10 тыс.жителей',
         sortable: true,
       },
-      {
-        name: 'predictArpu',
-        text: 'Прогноз прироста ARPU, млн.руб',
-        sortable: true,
-      },
     ],
     exportLink: '#',
-    filter: {},
+    filter: {
+      type: 'city',
+      product: 'debit',
+    },
   },
 
   mutations: {
@@ -53,8 +51,8 @@ export default {
     setFilterSearch(state, search) {
       state.filter = { ...state.filter, search };
     },
-    setFilterTheme(state, theme) {
-      state.filter = { ...state.filter, theme };
+    setFilterProduct(state, product) {
+      state.filter = { ...state.filter, product };
     },
     setFilterType(state, type) {
       state.filter = { ...state.filter, type };
@@ -65,7 +63,15 @@ export default {
     async fetchList({ commit }, query) {
       try {
         const { data } = await RegionPredictApi.getList(query);
-        commit('setList', data);
+        const calcPosition = (cur, pred) => {
+          const pos = pred ? 100 - (cur || 0 / pred) * 100 : '';
+          return Math.round(pos * 100) / 100;
+        };
+        const addedPosition = data.map((item) => ({
+          ...item,
+          position: calcPosition(item.currentClientIndex, item.predictClientIndex),
+        }));
+        commit('setList', addedPosition);
       } catch (error) {
         console.log(error);
       }
@@ -106,8 +112,8 @@ export default {
     getFilterSearch(state) {
       return state.filter.search;
     },
-    getFilterTheme(state) {
-      return state.filter.theme;
+    getFilterProduct(state) {
+      return state.filter.product;
     },
     getFilterType(state) {
       return state.filter.type;

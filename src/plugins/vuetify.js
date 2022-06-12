@@ -16,6 +16,7 @@ export default new Vuetify({
         secondary: '#EAEFFC',
         accent: '#0E3263',
         base: '#0E3263',
+        success: '#0DC081',
       },
     },
   },
