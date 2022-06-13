@@ -18,20 +18,18 @@ export default {
         sortable: true,
       },
       {
-        name: 'category',
+        name: 'theme',
         text: 'Тематика',
         sortable: true,
       },
       {
-        name: 'n_subscribers',
+        name: 'nSubscribers',
         text: 'Аудитория',
         sortable: true,
       },
     ],
     exportLink: '#',
     filter: {
-      type: 'city',
-      product: 'debit',
     },
   },
 
@@ -48,19 +46,32 @@ export default {
     setFilterSearch(state, search) {
       state.filter = { ...state.filter, search };
     },
-    setFilterProduct(state, product) {
-      state.filter = { ...state.filter, product };
+    setFilterSubscribers(state, nSubscribers) {
+      state.filter = { ...state.filter, nSubscribers };
     },
-    setFilterType(state, type) {
-      state.filter = { ...state.filter, type };
+    setFilterTheme(state, theme) {
+      const oldFilter = { ...state.filter };
+      if (theme) {
+        state.filter = { ...oldFilter, theme };
+      } else {
+        delete oldFilter.theme;
+        state.filter = oldFilter;
+      }
     },
   },
 
   actions: {
     async fetchList({ commit }, query) {
       try {
-        const { data } = await ChannelsApi.getList(query);
-        commit('setList', uniqBy(data, 'name_id'));
+        const data = uniqBy((await ChannelsApi.getList(query)).data, 'name_id')
+          .map((item) => ({
+            ...item,
+            theme: item.category,
+            nSubscribers: item.n_subscribers,
+          }));
+        delete data.category;
+        delete data.n_subscribers;
+        commit('setList', data);
       } catch (error) {
         console.log(error);
       }
@@ -101,14 +112,25 @@ export default {
     getFilterSearch(state) {
       return state.filter.search;
     },
-    getFilterProduct(state) {
-      return state.filter.product;
+    getFilterTheme(state) {
+      return state.filter.theme;
     },
-    getFilterType(state) {
-      return state.filter.type;
+    getFilterSubscribers(state) {
+      return state.filter.nSubscribers;
     },
     getFilter(state) {
       return state.filter;
+    },
+    getMinMaxSub(state) {
+      const list = state.list
+        ?.map((item) => item.nSubscribers)
+        .filter((item) => Number.isInteger(item))
+        || [];
+      let result = [0, 100];
+      if (list.length > 0) {
+        result = [Math.min(...list), Math.max(...list)];
+      }
+      return result;
     },
   },
 };

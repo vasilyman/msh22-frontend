@@ -63,7 +63,9 @@ export default {
       return this.list.filter((item) => {
         let result = true;
         Object.entries(this.filter).forEach(([key, val]) => {
-          result = result && (!item[key] || item[key] === val);
+          if (Array.isArray(val)) {
+            result = result && (!item[key] || (item[key] >= val[0] && item[key] <= val[1]));
+          } else result = result && (!item[key] || item[key] === val);
         });
         return result;
       });

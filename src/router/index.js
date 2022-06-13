@@ -28,7 +28,10 @@ const routes = [
   {
     path: '/channels',
     name: 'channels',
-    component: () => import(/* webpackChunkName: "channels" */ '@/views/channels.vue'),
+    components: {
+      default: () => import(/* webpackChunkName: "channels" */ '@/views/channels.vue'),
+      sidebar: () => import(/* webpackChunkName: "sidebarChannelFilters" */ '@/components/channelFilters.vue'),
+    },
   },
 ];
 

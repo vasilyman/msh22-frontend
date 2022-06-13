@@ -31,6 +31,7 @@
             :list="getList"
             :columns="getColumns"
             :query="query"
+            :filter="getFilter"
           ></DataTable>
         </v-col>
       </v-row>
@@ -60,7 +61,7 @@ export default {
       'Channels',
       [
         'getList', 'getColumns', 'getExportLink',
-        'getSubtitle', 'getTitle'],
+        'getSubtitle', 'getTitle', 'getFilter'],
     ),
     query() {
       const query = {

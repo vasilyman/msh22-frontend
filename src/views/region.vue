@@ -93,7 +93,7 @@ export default {
     },
   },
   created() {
-    this.connectWs();
+    // this.connectWs();
   },
 };
 </script>

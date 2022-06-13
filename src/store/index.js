@@ -10,6 +10,7 @@ import Regions from '@/store/modules/Regions';
 import ChannelBag from '@/store/modules/ChannelBag';
 import Leads from '@/store/modules/Leads';
 import Channels from '@/store/modules/Channels';
+import Themes from '@/store/modules/Themes';
 
 Vue.use(Vuex);
 
@@ -32,5 +33,6 @@ export default new Vuex.Store({
     ChannelBag,
     Leads,
     Channels,
+    Themes,
   },
 });
