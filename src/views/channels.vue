@@ -32,6 +32,7 @@
             :columns="getColumns"
             :query="query"
             :filter="getFilter"
+            @click:row="onClickRow"
           ></DataTable>
         </v-col>
       </v-row>
@@ -70,6 +71,14 @@ export default {
       };
       return query;
     },
+    drawerRight: {
+      get() {
+        return this.$store.getters['App/getDrawerRight'];
+      },
+      set(val) {
+        this.$store.commit('App/setDrawerRight', val);
+      },
+    },
   },
   watch: {
     query: {
@@ -84,6 +93,11 @@ export default {
     ...mapActions('Channels', ['fetchList']),
     async fetchData(query) {
       await this.fetchList(query);
+    },
+    onClickRow(row) {
+      this.$store.commit('App/setDrawerRightComponent', 'ChannelDetails');
+      this.drawerRight = true;
+      this.$store.commit('App/setDrawerRightProps', row);
     },
   },
 };

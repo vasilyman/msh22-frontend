@@ -8,7 +8,7 @@
     app
     :mobile-breakpoint="0"
     :temporary="true"
-    width="60%"
+    width="40%"
   >
     <component
       v-if="getDrawerRightComponent"
@@ -32,6 +32,7 @@ export default {
   },
   components: {
     CampainDetails: () => import('@/components/CampainDetails.vue'),
+    ChannelDetails: () => import('@/components/ChannelDetails.vue'),
   },
   data() {
     return {
