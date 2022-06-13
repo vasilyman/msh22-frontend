@@ -38,7 +38,7 @@
         <v-col>
           После оптимизации
         </v-col>
-        <v-col cols="auto" class="success--text">
+        <v-col cols="auto" style="color:#0063ce;caret-color: #0063ce;">
           Механики привлечения
         </v-col>
       </v-row>

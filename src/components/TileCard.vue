@@ -39,7 +39,7 @@
         <v-col>
           {{ info.text1 }}
         </v-col>
-        <v-col cols="auto" class="success--text">
+        <v-col cols="auto" style="color:#0063ce;caret-color: #0063ce;">
           {{ info.text2 }}
         </v-col>
       </v-row>
